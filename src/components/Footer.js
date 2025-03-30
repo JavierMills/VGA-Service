@@ -13,8 +13,6 @@ const Footer = () => {
                 by &nbsp; <Link className='underline underline-offset-2' 
                 href="https://github.com/JavierMills" target={'_blank'}> JavierMills </Link>
             </div> 
-            <Link className='underline underline-offset-2' 
-                href="https://github.com/JavierMills" target={'_blank'}>Hello</Link>
         </Layout>
     </footer>
   )

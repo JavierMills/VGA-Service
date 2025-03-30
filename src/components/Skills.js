@@ -1,64 +1,146 @@
-import React from 'react'
+import React,{ useRef }  from 'react'
 import {motion} from 'framer-motion'
+import styled, { keyframes } from 'styled-components'
+import {WhatsApp} from './Icons'
 
 
-const Skill = ({name, x ,y, className=""}) => {
+import LG from '../../public/images/imagenes_vga/image_lg.png';
+import SAMSUMG from '../../public/images/imagenes_vga/samsumg.png';
+import MABE  from '../../public/images/imagenes_vga/mabe.png';
+import WINA  from '../../public/images/imagenes_vga/wina.png';
+import WHIRL  from '../../public/images/imagenes_vga/pol.png';
+import HISSENSE  from '../../public/images/imagenes_vga/hissense.png';
+import FRI  from '../../public/images/imagenes_vga/frigadiere.png';
+import MY  from '../../public/images/imagenes_vga/tagg.png';
+import GENERAL  from '../../public/images/imagenes_vga/gl.png';
+import DAE  from '../../public/images/imagenes_vga/dae.png';
+
+
+
+const Section = styled.section`
+min-height: 8vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+&>*:first-child{
+  animation-duration: 20s;
+
+  @media (max-width: 30em){
+    animation-duration: 20s;
+  }
+}
+
+&>*:last-child{
+  animation-duration: 15s;
+  @media (max-width: 30em){
+    animation-duration: 10s;
+  }
+}
+`
+
+const move = keyframes`
+0%{ transform: translateX(100%)};
+100% { transform: translateX(-100%)}
+`
+//fila de del componente
+const Row = styled.div`
+background-color:${props => props.theme.text};
+//el comportamiento del espacio en blanco que babra dentro de el elemto
+white-space: nowrap;
+// el ancho de cualquier borde o relleno ser añadirá al ancho final desplegado.
+box-sizing: content-box;
+margin: 1rem 0;
+display: flex;
+animation: ${move} linear infinite ${props => props.direction};
+
+`
+
+//estilo de cada item
+const ItemContainer = styled.div`
+width: 16rem;
+margin: 0 1rem;
+border-radius: 20px;
+cursor: pointer;
+
+img{
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 48em){
+width: 12rem; 
+}
+
+@media (max-width: 30em){
+  width: 10rem; 
+  }
+`
+
+
+
+
+// segundo componente de el iyem y su contenido dentro de la row
+const NtfItem = ({img, number=0, price=0, passref}) =>{
+
+let play = (e) => {
+  passref.current.style.animationPlayState ='running';
+
+}
+let pause = (e) => {
+  passref.current.style.animationPlayState ='paused';
+}
 
   return (
-    <motion.div className={`flex items-center justify-center rounded-full font-semibold bg-dark text-light py-3 px-6 shadow-dark
-    cursor-pointer absolute dark:text-dark ${className} lg:py-2 lg:px-4 md:text-sm md:py-1.5 md:px-3 xs:bg-transparent xs:dark:bg-transparent
-    xs:text-light xs:dark:text-light xs:font-bold
-    `}
-      whileHover={{scale: 1.05}}
-      initial={{x:0 , y: 0}}
-      whileInView={{x: x, y:y, transition:{duration: 1.5} }}
-      viewport={{once: true}}
-    
-      // viewport={{once: true}}
-    >
-      {name}
-    </motion.div>
+    <ItemContainer onMouseOver={e => pause(e)}
+     onMouseOut={e => play(e)}>
+
+      <img src={img.src} alt='marcas' />
+     
+    </ItemContainer>
   )
 }
 
 
 
-const Skills = () => {
-  return (
-    <>
-      <h2 className='font-bold text-8xl mt-64 w-full text-center md:text-6xl md:mt-32'>Skills</h2>
-      <div className='w-full h-screen relative flex items-center justify-center rounded-full bg-circularLight dark:bg-circularDark first-letter:
-      lg:h-[80vh] sm:h-[60vh] xs:h-[50vh] 
-      lg:bg-circularDarkLg lg:dark:bg-circularDarkLg
-      md:bg-circularDarkMd md:dark:bg-circularDarkMd
-      sm:bg-circularDarkSm sm:dark:bg-circularDarkSm
-      '>
 
-      <motion.div className='flex items-center justify-center rounded-full font-semibold bg-yellow-400 text-light p-8 shadow-dark
-      cursor-pointer absolute dark:text-dark dark:font-semibold lg:p-6 md:p-4 xs:text-sm xs:p-2
-      '
-        whileHover={{scale: 1.05}}f
-      >
-        Web
-      </motion.div>
-    <Skill className='bg-slate-500'    name="CSS" x="-5vw" y="-10vw" />
-    <Skill className='bg-emerald-500'  name="Docker" x="-20vw" y="2vw" />
-    <Skill className='bg-pink-500'     name="Tailwind CSS" x="20vw" y="6vw" />
-    <Skill className='bg-lime-500'     name="ReactJS" x="0vw" y="12vw" />
-    <Skill className='bg-red-500'      name="Angular" x="-20vw" y="-15vw" />
-    <Skill className='bg-zinc-500'     name="NextJS" x="15vw" y="-12vw" />
-    <Skill className='bg-sky-500'      name="Appian" x="32vw" y="-5vw" />
-    <Skill className='bg-yellow-400'   name="JavaScript" x="0vw" y="-20vw" />
-    <Skill className='bg-red-500'      name="Java" x="-12vw" y="22vw" />
-    <Skill className='bg-neutral-500'  name="GitHub" x="18vw" y="18vw" />
-    <Skill className='bg-fuchsia-500'  name="HTML" x="-27vw" y="10vw" />
-    <Skill className='bg-purple-500'   name="GraphQL" x="-39vw" y="-2vw" />
-    <Skill className='bg-teal-500'     name="NodeJS" x="32vw" y="6vw" />
-    <Skill className='bg-green-500'    name="SpringBoot" x="30vw" y="-15vw" />
-      </div>
-    
-    </>
-  )
+
+const Skills = () => {
+
+  const Row1Ref= useRef(null);
+  const Row2Ref= useRef(null);
+    return (
+
+    <>
+        {/* <h2 className='bg-slate-800 font-bold text-8xl mt-64 w-full text-center md:text-6xl md:mt-32'>Skills</h2> */}
+      <Section className='bg-light dark:bg-dark' id='showcase'>
+        <Row direction="none" ref={Row1Ref}>
+        <NtfItem className="bg-light" img={HISSENSE} passref={Row1Ref}/> 
+          <NtfItem className="bg-light" img={MABE} passref={Row1Ref}/> 
+          <NtfItem className="bg-light" img={WINA} passref={Row1Ref}/>
+          <NtfItem className="bg-light" img={DAE} passref={Row1Ref}/> 
+          <NtfItem className="bg-light"  img={FRI} passref={Row1Ref}/>
+  
+  
+        </Row>
+  
+        <Row direction="reverse" ref={Row2Ref}>
+          <NtfItem className="bg-light" img={LG} passref={Row1Ref}/>
+          <NtfItem  number={9}  price={4} img={SAMSUMG} passref={Row2Ref}/>
+          <NtfItem className="bg-light" img={MY} passref={Row1Ref}/>
+          <NtfItem className="bg-light" img={WHIRL} passref={Row1Ref}/>
+          <NtfItem className="bg-light" img={GENERAL} passref={Row1Ref}/>  
+        </Row>
+  
+      </Section>
+      </>
+    )
 }
 
 export default Skills

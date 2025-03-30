@@ -1,22 +1,54 @@
 import Link from 'next/link'
 import React from 'react'
-import { motion } from 'framer-motion'
+import COLDTECH  from '../../public/images/imagenes_vga/coldtech.png';
+import styled from 'styled-components'
+import {motion} from 'framer-motion'
+
+
+
+const ItemContainer = styled.div`
+width: 7rem;
+margin: 0 1rem;
+cursor: pointer;
+img{
+  width: 100%;
+  height: auto;
+  position:static;
+
+}
+
+@media (max-width: 67rem){
+width: 4rem; 
+}
+
+
+@media (max-width: 48em){
+width: 6rem; 
+}
+
+@media (max-width: 30em){
+  width: 4rem; 
+  }
+`
+
+const ColdTechIcon = ({img}) =>{  
+    return (
+      <ItemContainer>
+        <img className='!width-[6rem]' src={img.src} alt='marcas' />
+      </ItemContainer>
+    )
+  }
+
 
 const MotionLink = motion(Link);
 
 const Logo = () => {
+
   return (
-    <div className='flex items-center justify-center mt-2'>
-        <MotionLink 
-        className='w-16 h-16 bg-dark text-light flex items-center justify-center rounded-full 
-        text-2xl  font-bold cursor-pointer border border-solid border-transparent dark:border-light' 
-        href="/"
-        whileHover={{
-        backgroundColor:["#121212", "rgba(131,58,180,1)","rgba(253,29,29,1)","rgba(252,176,69,1)","rgba(131,58,180,1)", "#121212"],
-        transition:{duration:1, repeat:Infinity}
-    }}
-        >RF</MotionLink>
-    </div>
+    
+    <ColdTechIcon img={COLDTECH}/> 
+
+  
   )
 }
 

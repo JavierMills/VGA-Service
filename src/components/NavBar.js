@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import {TwitterIcon , FacebookIcon, GithubIcon, LinkedInIcon, PinterestIcon, DribbbleIcon, SunIcon, MoonIcon} from './Icons'
+import {TwitterIcon , FacebookIcon, Youtube, SunIcon, MoonIcon, WhatsApp} from './Icons'
 import Logo from './Logo'
 import {motion} from 'framer-motion'
 import useThemeSwitcher from './hook/useThemeSwitcher'
@@ -45,7 +45,7 @@ const CostomMobileLink = ({href, title, className="", toggle}) =>{
   )
 }
 
-const NavBar = () => {
+const NavBar = () => { 
 
 
   const [mode, setMode] = useThemeSwitcher();
@@ -69,21 +69,18 @@ const NavBar = () => {
 <div className='w-full flex justify-between items-center lg:hidden'>
     <nav>
 
-      <CostomLink href="/" title="Home" className='mr-4'/>
-      <CostomLink href="/about" title="About" className='mx-4'/>
-      <CostomLink href="/projects" title="Projects" className='mx-4'/>
+      <CostomLink href="/" title="Inicio" className='mr-4'/>
+      <CostomLink href="/about" title="Nosotros" className='mx-4'/>
+      <CostomLink href="/projects" title="Servicios" className='mx-4'/>
       <CostomLink href="/articles" title="Articles" className='ml-4'/>
     </nav>
 
 
 
     <nav className='flex items-center justify-center flex-wrap'>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mr-3"> <TwitterIcon/> </motion.a>
         <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3"> <FacebookIcon/> </motion.a>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3"> <GithubIcon/> </motion.a>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3"> <LinkedInIcon/> </motion.a>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3 bg-light rounded-full"> <PinterestIcon/> </motion.a>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 ml-3"> <DribbbleIcon/> </motion.a>
+        <motion.a href="https://www.youtube.com/watch?v=dFpSnBrjIhg" target={"_blank"}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3"> <Youtube/> </motion.a>
+        <motion.a href="https://wa.me/5533824406?text=Hola buen dia, me interasa hacer una cotizacion " target={"_blank"} whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-10 mx-5"> <WhatsApp/> </motion.a>
 
         <button onClick={() => setMode(mode === "light" ? "dark" : "light")}
         // lo colocamos en backtiks para poner un ternario en la clase y validar 
@@ -113,21 +110,19 @@ const NavBar = () => {
 '>
     <nav className='flex items-center flex-col justify-center'>
 
-      <CostomMobileLink href="/" title="Home" className='' toggle={handleClick}/>
-      <CostomMobileLink href="/about" title="About" className='' toggle={handleClick}/>
-      <CostomMobileLink href="/projects" title="Projects" className='' toggle={handleClick}/>
+      <CostomMobileLink href="/" title="Inicio" className='' toggle={handleClick}/>
+      <CostomMobileLink href="/about" title="Nosotros" className='' toggle={handleClick}/>
+      <CostomMobileLink href="/projects" title="Servicios" className='' toggle={handleClick}/>
       <CostomMobileLink href="/articles" title="Articles" className='' toggle={handleClick}/>
     </nav>
 
 
 
-    <nav className='flex items-center justify-center flex-wrap mt-2'>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mr-3 sm:mx-1"> <TwitterIcon/> </motion.a>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3 sm:mx-1"> <FacebookIcon/> </motion.a>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3 sm:mx-1 bg-light rounded-full dark:bg-dark"> <GithubIcon/> </motion.a>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3 sm:mx-1"> <LinkedInIcon/> </motion.a>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3 sm:mx-1 bg-light rounded-full"> <PinterestIcon/> </motion.a>
-        <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 ml-3 sm:mx-1"> <DribbbleIcon/> </motion.a>
+    <nav className='flex items-center justify-center flex-wrap mt-2'> 
+             <motion.a href="" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3"> <FacebookIcon/> </motion.a>
+             <motion.a href="https://www.youtube.com/watch?v=dFpSnBrjIhg" target={'_blank'}  whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-3"> <Youtube/> </motion.a>
+             <motion.a href="https://wa.me/5533824406?text=Hola buen dia, me interasa hacer una cotizacion " target={"_blank"} whileHover={{y: -3}}  whileTap={{scale:0.9}} className="w-6 mx-5"> <WhatsApp/> </motion.a>
+
 
         <button onClick={() => setMode(mode === "light" ? "dark" : "light")}
         // lo colocamos en backtiks para poner un ternario en la clase y validar 
@@ -148,9 +143,7 @@ const NavBar = () => {
   :null
 }
    
-    <div className='absolute left-[50%] top-2 translate-x-[-50%]'>
-      <Logo/>
-    </div>
+   
 
     
    </header>

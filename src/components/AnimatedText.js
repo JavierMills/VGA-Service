@@ -1,6 +1,8 @@
 import React from 'react'
 import {motion} from 'framer-motion'
 
+
+
 const quote = {
     initial:{
         opacity: 1,
@@ -38,6 +40,7 @@ const AnimatedText = ({title, className=""}) => {
         >
             {
                 title.split(" ").map((word, index) =>
+
                <motion.span key={word+ '-' + index} className="inline-block" variants={singleWord} 
             //    initial="initial"
             //    animate="animate"
